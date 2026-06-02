@@ -1,2 +1,211 @@
-bah
-knjhv
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel de Iluminação</title>
+
+<style>
+
+/* ==========================
+   CONFIGURAÇÃO GERAL
+========================== */
+body{
+    margin:0;
+    font-family:'Segoe UI', Arial, sans-serif;
+    background-color:#121212;
+    color:white;
+}
+
+/* ==========================
+   NAVBAR
+========================== */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background-color:#1e1e1e;
+    border-bottom:1px solid #333;
+
+    padding:15px 30px;
+}
+
+.logo img{
+    height:50px;
+}
+
+.nav-links{
+    list-style:none;
+    display:flex;
+    gap:25px;
+    margin:0;
+    padding:0;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#ffffff;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:#ffeb3b;
+}
+
+/* ==========================
+   DASHBOARD
+========================== */
+.dashboard{
+    display:flex;
+    justify-content:center;
+    margin-top:50px;
+}
+
+.card-lampada{
+    background:#1e1e1e;
+    padding:30px;
+    border-radius:20px;
+    border:1px solid #333;
+    text-align:center;
+    width:280px;
+}
+
+/* LED */
+.led-status{
+    width:12px;
+    height:12px;
+    background:#555;
+    border-radius:50%;
+    margin:0 auto 20px;
+
+    transition:0.3s;
+}
+
+/* Título */
+h3{
+    font-size:0.8em;
+    letter-spacing:2px;
+    color:#888;
+    margin-bottom:20px;
+}
+
+/* Imagem */
+#myImage{
+    width:120px;
+    margin-bottom:20px;
+}
+
+/* Botões */
+button{
+    background:#333;
+    color:white;
+    border:none;
+
+    padding:10px 15px;
+    border-radius:8px;
+
+    cursor:pointer;
+    font-weight:bold;
+
+    margin:5px;
+
+    transition:0.3s;
+}
+
+button:hover{
+    background:#444;
+}
+
+/* Rodapé Data */
+.data{
+    margin-top:15px;
+    color:#aaa;
+    font-size:0.9em;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ==========================
+     NAVBAR
+========================== -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        <img src="logo.png" alt="Logo">
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Alunos</a></li>
+        <li><a href="#">Data</a></li>
+    </ul>
+
+</nav>
+
+<!-- ==========================
+     DASHBOARD
+========================== -->
+
+<div class="dashboard">
+
+    <div class="card-lampada">
+
+        <h3>SISTEMA DE ILUMINAÇÃO</h3>
+
+        <div id="led" class="led-status"></div>
+
+        <img id="myImage"
+             src="pic_bulboff.gif"
+             alt="Lâmpada">
+
+        <div class="controles">
+            <button onclick="ligar()">LIGAR</button>
+            <button onclick="desligar()">DESLIGAR</button>
+        </div>
+
+        <div class="data" id="dataAtual"></div>
+
+    </div>
+
+</div>
+
+<script>
+
+function ligar(){
+
+    document.getElementById("myImage").src =
+    "pic_bulbon.gif";
+
+    const led = document.getElementById("led");
+
+    led.style.backgroundColor = "#ffeb3b";
+    led.style.boxShadow = "0 0 15px #ffeb3b";
+}
+
+function desligar(){
+
+    document.getElementById("myImage").src =
+    "pic_bulboff.gif";
+
+    const led = document.getElementById("led");
+
+    led.style.backgroundColor = "#555";
+    led.style.boxShadow = "none";
+}
+
+/* Data automática */
+
+const hoje = new Date();
+
+document.getElementById("dataAtual").innerHTML =
+hoje.toLocaleDateString("pt-BR");
+
+</script>
+
+</body>
+</html>
